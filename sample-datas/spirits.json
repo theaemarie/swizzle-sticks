@@ -1,0 +1,29 @@
+[
+  {
+    "id"      : "1",
+    "type"    : "gin",
+    "brand"   : "Hendricks",
+    "name"    : "",
+    "notes"   : "Cucumber Flavor"
+  },{
+    "id"      : "2",
+    "type"    : "liqueur",
+    "brand"   : "Campari",
+    "name"    : "",
+    "notes"   : ""
+  },{
+    "id"      : "3",
+    "type"    : "aperitif wine",
+    "brand"   : "Martini",
+    "name"    : "rosso",
+    "notes"   : "",
+    "storage" : ["refrigerator"]
+  },{
+    "id"      : "4",
+    "type"    : "gin",
+    "brand"   : "Tanqueray",
+    "name"    : "",
+    "notes"   : "",
+    "storage" : [""]
+  }
+]

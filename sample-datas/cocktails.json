@@ -1,0 +1,25 @@
+[
+  {
+    "id"   : 1,
+    "name" : "Negroni",
+    "ingredients" : [
+      {
+        "id"   : 2,
+        "qty"  : "1",
+        "unit" : "oz",
+        "substitutes" : []
+      },
+      {
+        "id"   : 3,
+        "qty"  : "1",
+        "unit" : "oz",
+        "substitutes" : []
+      },{
+        "id"   : 4,
+        "qty"  : "1",
+        "unit" : "oz",
+        "substitutes" : []
+      }
+    ]
+  }
+]
