@@ -1,6 +1,6 @@
 # Swizzle Sticks
 
-Swizzle Sticks is an app to track cocktails recipes, mark them as made, with notes to be written, recipes to be favorited, and spirits inventory to track.
+Swizzle Sticks is a web app to track cocktails recipes, mark them as made, with notes to be written, recipes to be favorited, and spirits inventory to track.
 
 ## Getting Started
 
