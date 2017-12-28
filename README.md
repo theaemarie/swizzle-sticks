@@ -28,6 +28,7 @@ No tests have been written, just yet.
 
 - [Node.js](https://nodejs.org/en/)
 - [MongoDB](https://www.mongodb.com/)
+- [mongoose](http://mongoosejs.com/) - MongoDB validation
 
 ## Contributing
 
@@ -39,4 +40,4 @@ As of this moment in life, no license is in place for use of this code.
 
 ## Acknowledgments
 
-- Inspired by the wonderful Node.js course 
+- Inspired by [The Complete Node.js Developer Course (2nd Edition)](https://www.udemy.com/the-complete-nodejs-developer-course-2/learn/v4/overview)
