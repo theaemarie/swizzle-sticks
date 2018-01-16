@@ -25,7 +25,16 @@ This project uses MongoDB to store the data, and therefor requires that Mongo DB
 
 ## Running the tests
 
-No tests have been written, just yet.
+Testing is done with mocha, expect, and supertest.
+
+```bash
+$ npm test
+```
+
+```bash
+$ npm run test-watch
+```
+
 
 ## Deployment
 
@@ -34,6 +43,7 @@ No tests have been written, just yet.
 - [Node.js](https://nodejs.org/en/)
 - [MongoDB](https://www.mongodb.com/)
 - [mongoose](http://mongoosejs.com/) - MongoDB validation
+- [Express](https://expressjs.com/)
 
 ## Contributing
 
