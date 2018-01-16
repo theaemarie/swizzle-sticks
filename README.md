@@ -16,7 +16,12 @@ This project uses MongoDB to store the data, and therefor requires that Mongo DB
 
   `$ npm install`
 
-1. Start the mongoDB server.
+1. Start the mongoDB server. ie:
+
+  ```bash
+  $ cd c:\Program Files\MongoDB\Server\3.4\bin
+  $ mongod.exe --dbpath c:\Users\<USER>\mongoData
+  ```
 
 ## Running the tests
 
