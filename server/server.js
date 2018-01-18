@@ -47,6 +47,16 @@ app.post('/families', (request, response) => {
   });
 });
 
+app.get('/cocktails', (request, response) => {
+  Cocktail.find().then((cocktails) => {
+    response.send({
+      cocktails
+    });
+  }, (e) => {
+    response.status(400).send(e);
+  });
+});
+
 
 app.listen(3000, () => {
   console.log('Started on port 3000.');
