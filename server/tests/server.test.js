@@ -1,14 +1,18 @@
 const expect = require('expect');
 const request = require('supertest');
+const {ObjectID} = require('mongodb');
 
 const {app} = require('./../server');
 const {Cocktail} = require('./../models/cocktail');
 
 const cocktails = [{
+  _id: new ObjectID(),
   name: 'French-Kiss Shooter'
 },{
+  _id: new ObjectID(), 
   name: 'Negroni'
 },{
+  _id: new ObjectID(),  
   name: 'Americano'
 }];
 
@@ -75,4 +79,31 @@ describe('GET /cocktails', () => {
       .end(done);
 
   });
+});
+
+describe('GET /cocktails/:id', () => {
+  it('should return cocktail document', (done) => {
+    request(app)
+      .get(`/cocktails/${cocktails[0]._id.toHexString()}`)
+      .expect(200)
+      .expect((response) => {
+        expect(response.body.cocktail.name).toBe(cocktails[0].name);
+      })
+      .end(done);
+  });
+
+  it('should return 400 if invalid cocktail id', (done) => {
+    request(app)
+      .get(`/cocktails/invalidID`)
+      .expect(400)
+      .end(done);
+  });
+
+  it('should return 400 error if cocktail not found', (done) => {
+    var hexId = new ObjectID().toHexString();
+    request(app)
+      .get(`/cocktails/${hexId}`)
+      .expect(400)
+      .end(done);
+    });
 });
