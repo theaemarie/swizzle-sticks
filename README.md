@@ -50,6 +50,10 @@ $ npm run test-watch
 
 ## Deployment
 
+```bash
+$ git push heroku
+```
+
 ## Built With
 
 - [Node.js](https://nodejs.org/en/)
