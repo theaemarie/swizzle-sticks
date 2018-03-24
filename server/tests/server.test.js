@@ -109,7 +109,7 @@ describe('GET /api/cocktails/:id', () => {
 });
 
 describe('DELETE /api/cocktails/:id', () => {
-  it('should delete the cocktail of provided id', (done) => {
+  it('should remove a cocktail of provided id', (done) => {
     let id = cocktails[0]._id.toHexString();
     request(app)
       .delete(`/api/cocktails/${id}`)
@@ -117,7 +117,16 @@ describe('DELETE /api/cocktails/:id', () => {
       .expect((response) => {
         expect(response.body.cocktail._id).toBe(id);
       })
-      .end(done);
+      .end((error, response) => {
+        if (error) {
+          return done(error);
+        }
+
+        Cocktail.findById(id).then((cocktail) => {
+          expect(cocktail).toBeFalsy();
+          done();
+        }).catch((e) => done(e));
+      });
   });
 
   it('should return 400 if invalid cocktail id', (done) => {
