@@ -22,13 +22,13 @@ beforeEach((done) => {
   }).then(() => done());
 });
 
-describe('POST /cocktails', () => {
+describe('POST /api/cocktails', () => {
   it('should create a new cocktail', (done) => {
     var name = 'mocktail';
 
     //supertext request
     request(app)
-      .post('/cocktails')
+      .post('/api/cocktails')
       .send({name})
       .expect(200)
       .expect((response) =>
@@ -38,7 +38,7 @@ describe('POST /cocktails', () => {
         if (error) {
           return done(error);
         }
-
+ 
         Cocktail.find().then((cocktailsDB) => {
           expect(cocktailsDB.length).toBe(cocktails.length + 1);
           expect(cocktailsDB.pop().name).toBe(name);
@@ -50,7 +50,7 @@ describe('POST /cocktails', () => {
 
   it('should not create a cocktail with no body data', (done) => {
     request(app)
-      .post('/cocktails')
+      .post('/api/cocktails')
       .send({})
       .expect(400)
       .end((err, response) => {
@@ -66,11 +66,11 @@ describe('POST /cocktails', () => {
   });
 });
 
-describe('GET /cocktails', () => {
+describe('GET /api/cocktails', () => {
 
   it('should get all cocktails', (done) => {
     request(app)
-      .get('/cocktails')
+      .get('/api/cocktails')
       .send({})
       .expect(200)
       .expect((response) => {
@@ -81,10 +81,10 @@ describe('GET /cocktails', () => {
   });
 });
 
-describe('GET /cocktails/:id', () => {
+describe('GET /api/cocktails/:id', () => {
   it('should return cocktail document', (done) => {
     request(app)
-      .get(`/cocktails/${cocktails[0]._id.toHexString()}`)
+      .get(`/api/cocktails/${cocktails[0]._id.toHexString()}`)
       .expect(200)
       .expect((response) => {
         expect(response.body.cocktail.name).toBe(cocktails[0].name);
@@ -94,7 +94,7 @@ describe('GET /cocktails/:id', () => {
 
   it('should return 400 if invalid cocktail id', (done) => {
     request(app)
-      .get(`/cocktails/invalidID`)
+      .get(`/api/cocktails/invalidID`)
       .expect(400)
       .end(done);
   });
@@ -102,8 +102,35 @@ describe('GET /cocktails/:id', () => {
   it('should return 400 error if cocktail not found', (done) => {
     var hexId = new ObjectID().toHexString();
     request(app)
-      .get(`/cocktails/${hexId}`)
+      .get(`/api/cocktails/${hexId}`)
       .expect(400)
       .end(done);
     });
+});
+
+describe('DELETE /api/cocktails/:id', () => {
+  it('should delete the cocktail of provided id', (done) => {
+    let id = cocktails[0]._id.toHexString();
+    request(app)
+      .delete(`/api/cocktails/${id}`)
+      .expect(200)
+      .expect((response) => {
+        expect(response.body._id).toBe(id);
+      })
+      .end(done);
+  });
+
+  it('should return 400 if invalid cocktail id', (done) => {
+    request(app)
+      .delete(`/api/cocktails/invalid`)
+      .expect(400)
+      .end(done);
+  });
+
+  it('should return 400 if cocktail not found', (done) => {
+    request(app)
+      .delete('/api/cocktails/5ab66b5c98d4e0172884ee7d')
+      .expect(400)
+      .end(done);
+  });
 });
