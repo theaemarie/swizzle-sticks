@@ -12,7 +12,7 @@ This project uses MongoDB to store the data, and therefor requires that Mongo DB
 
 ### Installing
 
-1. Install needed dependencies.
+1. In the root of the project, install needed dependencies.
 
     `$ npm install`
 
@@ -22,6 +22,18 @@ This project uses MongoDB to store the data, and therefor requires that Mongo DB
     $ cd c:\Program Files\MongoDB\Server\3.4\bin
     $ mongod.exe --dbpath c:\Users\<USER>\mongoData
     ```
+
+1. In the root of the project, start the swizzle-sticks server
+
+    ```bash
+    $ npm start
+    ```
+    Or to watch changes:
+    ```bash
+    $ nodemon server/server.js
+    ```
+
+1. Access the api at http://localhost:3000/
 
 ## Running the tests
 
