@@ -99,11 +99,11 @@ describe('GET /api/cocktails/:id', () => {
       .end(done);
   });
 
-  it('should return 400 error if cocktail not found', (done) => {
+  it('should return 404 error if cocktail not found', (done) => {
     var hexId = new ObjectID().toHexString();
     request(app)
       .get(`/api/cocktails/${hexId}`)
-      .expect(400)
+      .expect(404)
       .end(done);
     });
 });
@@ -115,7 +115,7 @@ describe('DELETE /api/cocktails/:id', () => {
       .delete(`/api/cocktails/${id}`)
       .expect(200)
       .expect((response) => {
-        expect(response.body._id).toBe(id);
+        expect(response.body.cocktail._id).toBe(id);
       })
       .end(done);
   });
@@ -127,10 +127,10 @@ describe('DELETE /api/cocktails/:id', () => {
       .end(done);
   });
 
-  it('should return 400 if cocktail not found', (done) => {
+  it('should return 404 if cocktail not found', (done) => {
     request(app)
       .delete('/api/cocktails/5ab66b5c98d4e0172884ee7d')
-      .expect(400)
+      .expect(404)
       .end(done);
   });
 });

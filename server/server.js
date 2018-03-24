@@ -64,7 +64,7 @@ app.get('/api/families/:id', (request, response) => {
 
   Family.findById(id).then((family) => {
     if (!family) {
-      return response.status(400).send('no family');
+      return response.status(404).send('no family');
     }
     response.send({family});
   }).catch((e) => {
@@ -107,7 +107,7 @@ app.get('/api/cocktails/:id', (request, response) => {
 
   Cocktail.findById(id).then((cocktail) => {
     if (!cocktail) {
-      return response.status(400).send('no cocktail');
+      return response.status(404).send('no cocktail');
     }
     response.send({cocktail});
   }).catch((e) => {
@@ -125,9 +125,9 @@ app.delete('/api/cocktails/:id', (request, response) => {
 
   Cocktail.findByIdAndRemove(id).then((cocktail) => {
     if (!cocktail) {
-      return response.status(400).send();
+      return response.status(404).send();
     }
-    response.send(cocktail);
+    response.send({cocktail});
   }).catch((e) => response.status(400).send() );
 });
 
