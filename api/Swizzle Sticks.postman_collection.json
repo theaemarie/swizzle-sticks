@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "4bb1c895-96f5-ad34-a0ba-17e86145a15f",
+		"name": "Swizzle Sticks",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "families",
+			"description": "",
+			"item": [
+				{
+					"name": "GET /api/families",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"Beer- and Cider-Based Mixed Drinks\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/families",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"families"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/families",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"Beer- and Cider-Based Mixed Drinks\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/families",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"families"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/families/:id Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"Beer- and Cider-Based Mixed Drinks\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/families/5a5d4be56cc1d1305ccb5482",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"families",
+								"5a5d4be56cc1d1305ccb5482"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cocktails",
+			"description": "",
+			"item": [
+				{
+					"name": "DELETE /api/cocktails/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"Beer- and Cider-Based Mixed Drinks\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/cocktails/5ab6688a7aeedd0d44b1f748",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cocktails",
+								"5ab6688a7aeedd0d44b1f748"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/cocktails",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"Beer- and Cider-Based Mixed Drinks\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/cocktails",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cocktails"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/cocktails/:id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"Beer- and Cider-Based Mixed Drinks\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/cocktails/5a6cfc5d97dcde1a581a138b",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cocktails",
+								"5a6cfc5d97dcde1a581a138b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/cocktails",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Gin and Tonic2\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/api/cocktails",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"cocktails"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
