@@ -10,6 +10,7 @@ var {User} = require('./models/user.js');
 
 var cocktails = require('./routes/api/cocktails/cocktails.js');
 var families = require('./routes/api/families/families.js');
+var ingredients = require('./routes/api/ingredients/ingredients.js');
 
 var app = express();
 const port = process.env.PORT || 3000;
@@ -20,23 +21,15 @@ app.get('/', (request, response) => {
   response.send('Swizzle Sticks');
 });
 
-app.post('/api/ingredients', (request, response) => {
-  var ingredient = new Ingredient({
-    name: request.body.name
-  });
-
-  ingredient.save().then((document)=> {
-    response.send(document);
-  }, (e) => {
-    response.status(400).send(e);
-  });
-});
+app.use('/api/ingredients', ingredients);
+app.use('/api/ingredients/:id', ingredients);
 
 app.use('/api/cocktails', cocktails);
 app.use('/api/cocktails/:id', cocktails);
 
 app.use('/api/families', families);
 app.use('/api/families/:id', families);
+
 
 /**
  * START APP

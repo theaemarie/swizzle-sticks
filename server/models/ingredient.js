@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 var ingredientSchema = mongoose.Schema({
   name: {
@@ -10,8 +11,8 @@ var ingredientSchema = mongoose.Schema({
   brand: {
     type: String
   },
-  family: {
-    type: String
+  category: {
+    type: ObjectId
   }
 });
 
