@@ -48,4 +48,19 @@ router.get('/:id', (request, response) => {
 
 });
 
+router.delete('/:id', (request, response) => {
+  var id = request.params.id;
+
+  if (!ObjectID.isValid(id) ) {
+    return response.status(400).send();
+  }
+
+  Family.findByIdAndRemove(id).then((family) => {
+    if (!family) {
+      return response.status(404).send();
+    }
+    response.send({family});
+  }).catch((e) => response.status(400).send() );
+});
+
 module.exports = router;

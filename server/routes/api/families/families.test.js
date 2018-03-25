@@ -108,3 +108,39 @@ describe('POST /api/families', () => {
       });
   });
 });
+
+describe('DELETE /api/families/:id', () => {
+  it('should remove a family of provided id', (done) => {
+    let id = families[0]._id.toHexString();
+    request(app)
+      .delete(`/api/families/${id}`)
+      .expect(200)
+      .expect((response) => {
+        expect(response.body.family._id).toBe(id);
+      })
+      .end((error, response) => {
+        if (error) {
+          return done(error);
+        }
+
+        Family.findById(id).then((family) => {
+          expect(family).toBeFalsy();
+          done();
+        }).catch((e) => done(e));
+      });
+  });
+
+  it('should return 400 if invalid family id', (done) => {
+    request(app)
+      .delete(`/api/families/invalid`)
+      .expect(400)
+      .end(done);
+  });
+
+  it('should return 404 if family not found', (done) => {
+    request(app)
+      .delete('/api/families/${families[0]._id.toHexString()}')
+      .expect(404)
+      .end(done);
+  });
+});
