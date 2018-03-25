@@ -2,8 +2,8 @@ const expect = require('expect');
 const request = require('supertest');
 const {ObjectID} = require('mongodb');
 
-const {app} = require('./../server');
-const {Cocktail} = require('./../models/cocktail');
+const {app} = require('../../../server');
+const {Cocktail} = require('../../../models/cocktail');
 
 const cocktails = [{
   _id: new ObjectID(),
@@ -140,6 +140,15 @@ describe('DELETE /api/cocktails/:id', () => {
     request(app)
       .delete('/api/cocktails/5ab66b5c98d4e0172884ee7d')
       .expect(404)
+      .end(done);
+  });
+});
+
+describe('PATCH /api/cockatils:id', () => {
+  it('should return 400 if invalid cockail id', (done) => {
+    request(app)
+      .patch(`/api/cocktails/invalid`)
+      .expect(400)
       .end(done);
   });
 });
