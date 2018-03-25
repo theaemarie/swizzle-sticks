@@ -139,7 +139,7 @@ describe('DELETE /api/families/:id', () => {
 
   it('should return 404 if family not found', (done) => {
     request(app)
-      .delete('/api/families/${families[0]._id.toHexString()}')
+      .delete('/api/families/5ab66b5c98d4e0172884ee7d')
       .expect(404)
       .end(done);
   });

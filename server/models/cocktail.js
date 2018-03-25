@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Cocktail Data model
 var cocktailSchema = mongoose.Schema({
@@ -18,10 +19,10 @@ var cocktailSchema = mongoose.Schema({
       unit: String
     }
   ],
-  origin: String
-  // family: {
-  //   type: ??
-  // }
+  origin: String,
+  family: {
+    type: ObjectId
+  }
 });
 
 var Cocktail = mongoose.model('Cocktail', cocktailSchema);

@@ -5,10 +5,14 @@ const {ObjectID} = require('mongodb');
 
 var {Cocktail} = require(__base + 'models/cocktail');
 
+var userModifiableFields = ['name', 'ingredients', 'origin', 'family'];
+
 // /api/cocktails
 router.post('/', (request, response) => {
   var cocktail = new Cocktail({
-    name: request.body.name
+    name: request.body.name,
+    origin: request.body.origin,
+    family: request.body.family
   });
 
   cocktail.save().then((document)=> {
@@ -63,7 +67,7 @@ router.delete('/:id', (request, response) => {
 
 router.patch('/:id', (request, response) => {
   var id = request.params.id;
-  var body = _.pick(request.body, ['name', 'ingredients']); //only allow certain properties to be updated.
+  var body = _.pick(request.body, userModifiableFields);
 
   if ( !ObjectID.isValid(id) ) {
     return response.status(400).send();

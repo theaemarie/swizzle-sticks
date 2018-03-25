@@ -11,8 +11,7 @@ var familySchema = mongoose.Schema({
   },
   description: {
     type: String
-  },
-  drinks: []
+  }
 });
 
 var Family = mongoose.model('Family', familySchema);

@@ -24,16 +24,18 @@ beforeEach((done) => {
 
 describe('POST /api/cocktails', () => {
   it('should create a new cocktail', (done) => {
-    var name = 'mocktail';
+    var name = 'mocktail'
+        origin = 'Fascinating origin story';
 
     //supertext request
     request(app)
       .post('/api/cocktails')
-      .send({name})
+      .send({name, origin})
       .expect(200)
-      .expect((response) =>
-        expect(response.body.name).toBe(name)
-      )
+      .expect((response) => {
+        expect(response.body.name).toBe(name);
+        expect(response.body.origin).toBe(origin);
+      })
       .end((error, response) => {
         if (error) {
           return done(error);
@@ -145,7 +147,7 @@ describe('DELETE /api/cocktails/:id', () => {
 });
 
 describe('PATCH /api/cockatils:id', () => {
-  it('should return 400 if invalid cockail id', (done) => {
+  it('should return 400 if invalid cocktail id', (done) => {
     request(app)
       .patch(`/api/cocktails/invalid`)
       .expect(400)
