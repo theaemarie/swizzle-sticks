@@ -45,7 +45,7 @@ router.get('/:id', (request, response) => {
     }
     response.send({cocktail});
   }).catch((e) => {
-    response.status(400).send();;
+    response.status(400).send();
   });
 
 });

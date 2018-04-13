@@ -106,6 +106,23 @@ describe('POST /api/ingredients', () => {
         }).catch((e) => done(e));
       });
   });
+
+  it('should not post an ingredient with the same name', (done) => {
+    request(app)
+      .post('/api/ingredients')
+      .send({'name': 'orange juice'})
+      .expect(400)
+      .end((err, resonse) => {
+        if (err) {
+          return done(err);
+        }
+
+        Ingredient.find().then((ingredientsDB) => {
+          expect(ingredientsDB.length).toBe(ingredients.length);
+          done();
+        }).catch((e) => done(e));
+      });
+  });
 });
 
 describe('DELETE /api/ingredients/:id', () => {

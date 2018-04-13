@@ -24,7 +24,7 @@ beforeEach((done) => {
 
 describe('POST /api/cocktails', () => {
   it('should create a new cocktail', (done) => {
-    var name = 'mocktail'
+    var name = 'mocktail',
         origin = 'Fascinating origin story';
 
     //supertext request

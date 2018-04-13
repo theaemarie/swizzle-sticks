@@ -27,7 +27,7 @@ MongoClient.connect('mongodb://localhost:27017', (error, client) => {
       console.log(`Spirits count: ${count}`);
     }, (error) => {
       console.error('Spirits can not be counted.', error);
-    })
+    });
 
 
   client.close();

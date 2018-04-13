@@ -43,7 +43,7 @@ router.get('/:id', (request, response) => {
     }
     response.send({family});
   }).catch((e) => {
-    response.status(400).send();;
+    response.status(400).send();
   });
 
 });
