@@ -13,6 +13,9 @@ var ingredientSchema = mongoose.Schema({
   },
   category: {
     type: ObjectId
+  },
+  updatedAt: {
+      type: Date
   }
 });
 

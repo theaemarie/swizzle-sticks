@@ -61,7 +61,7 @@ router.get('/:id', (request, response) => {
 });
 
 router.delete('/:id', (request, response) => {
-  var id = request.params.id;
+    var id = request.params.id;
 
     if (!ObjectID.isValid(id) ) {
         return response.status(400).send();
@@ -73,6 +73,28 @@ router.delete('/:id', (request, response) => {
         }
         response.send({ingredient});
     }).catch((e) => response.status(400).send() );
+});
+
+router.patch('/:id', (request, response) => {
+    var id = request.params.id,
+        body = _.pick(request.body, ['name', 'brand', 'category']);
+
+    if (!ObjectID.isValid(id) ) {
+        return response.status(400).send();
+    }
+
+    body.updatedAt = new Date().getTime();
+
+    Ingredient.findByIdAndUpdate(id, {$set: body}, {
+        new: true
+    }).then((ingredient) => {
+        if (!ingredient) return response.status(404).send();
+
+        response.send({ingredient});
+
+    }).catch((e) => {
+        response.status(400).send();
+    });
 });
 
 module.exports = router;
