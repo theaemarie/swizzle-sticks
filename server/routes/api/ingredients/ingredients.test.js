@@ -160,3 +160,24 @@ describe('DELETE /api/ingredients/:id', () => {
       .end(done);
   });
 });
+
+describe('PATCH /api/ingredients/:id', () => {
+    it('should update the ingredient', (done) => {
+        let hexId = ingredients[0]._id.toHexString();
+        let data = {
+            name: 'orange liquid'
+        };
+
+        let twoMin = 2*60*1000;
+
+        request(app)
+            .patch(`/api/ingredients/${hexId}`)
+            .send(data)
+            .expect(200)
+            .expect((response) => {
+                expect(response.body.ingredient.name).toBe(data.name);
+                expect(new Date() - new Date(response.body.ingredient.updatedAt)).toBeLessThan(twoMin);
+                done();
+            }).catch((e) => done(e));
+    });
+})
