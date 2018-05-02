@@ -1,5 +1,7 @@
 global.__base = __dirname + '/';
 
+require('./config/config');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
@@ -13,7 +15,7 @@ var families = require('./routes/api/families/families.js');
 var ingredients = require('./routes/api/ingredients/ingredients.js');
 
 var app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
