@@ -12,7 +12,8 @@ router.post('/', (request, response) => {
   var cocktail = new Cocktail({
     name: request.body.name,
     origin: request.body.origin,
-    family: request.body.family
+    family: request.body.family,
+    ingredients: request.body.ingredients
   });
 
   cocktail.save().then((document)=> {
@@ -66,14 +67,24 @@ router.delete('/:id', (request, response) => {
 });
 
 router.patch('/:id', (request, response) => {
-  var id = request.params.id;
-  var body = _.pick(request.body, userModifiableFields);
+    var id = request.params.id;
+    var body = _.pick(request.body, userModifiableFields);
 
-  if ( !ObjectID.isValid(id) ) {
-    return response.status(400).send();
-  }
+    if ( !ObjectID.isValid(id) ) {
+        return response.status(400).send();
+    }
+    body.updatedAt = new Date().getTime();
 
-  return response.status(200).send();
+    Cocktail.findByIdAndUpdate(id, {$set: body}, {
+            new: true
+        }).then((cocktail) => {
+            if (!cocktail) return response.status(404).send();
+
+            response.send({cocktail});
+
+        }).catch((e) => {
+            response.status(400).send();
+        });
 });
 
 module.exports = router;

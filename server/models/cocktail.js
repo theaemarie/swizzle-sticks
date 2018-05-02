@@ -12,7 +12,7 @@ var cocktailSchema = mongoose.Schema({
   ingredients: [
     {
       id: {
-        type: Number,
+        type: ObjectId,
         required: true
       },
       qty: Number,
@@ -22,7 +22,8 @@ var cocktailSchema = mongoose.Schema({
   origin: String,
   family: {
     type: ObjectId
-  }
+  },
+  updatedAt: Date
 });
 
 var Cocktail = mongoose.model('Cocktail', cocktailSchema);
