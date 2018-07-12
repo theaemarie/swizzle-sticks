@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const {ObjectID} = require('mongodb');
 
-var {Family} = require(__base + 'models/family');
+var {Family} = require(__base + '/models/family');
 
 // /api/families
 

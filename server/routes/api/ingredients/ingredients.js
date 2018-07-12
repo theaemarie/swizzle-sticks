@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const {ObjectID} = require('mongodb');
 
-var {Ingredient} = require(__base + 'models/ingredient');
+var {Ingredient} = require(__base + '/models/ingredient');
 
 // /api/ingredients
 

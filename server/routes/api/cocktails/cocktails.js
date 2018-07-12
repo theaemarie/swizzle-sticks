@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const {ObjectID} = require('mongodb');
 
-var {Cocktail} = require(__base + 'models/cocktail');
+var {Cocktail} = require(__base + '/models/cocktail');
 
 var userModifiableFields = ['name', 'ingredients', 'origin', 'family'];
 

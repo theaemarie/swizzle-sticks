@@ -3,8 +3,11 @@ global.__base = __dirname + '/';
 require('./config/config');
 
 const express = require('express');
-const bodyParser = require('body-parser');
+const exphbs = require('express-handlebars');
+const path = require('path');
+
 const {ObjectID} = require('mongodb');
+
 
 var {mongoose} = require('./db/mongoose');
 var {Ingredient} = require('./models/ingredient');
@@ -17,10 +20,20 @@ var ingredients = require('./routes/api/ingredients/ingredients.js');
 var app = express();
 const port = process.env.PORT;
 
-app.use(bodyParser.json());
+// app.use(express.static(__dirname + '/../app'));
+const viewsPath = path.join(__dirname, '..', 'app/views/');
 
-app.get('/', (request, response) => {
-  response.send('Swizzle Sticks');
+app.set('views', viewsPath);
+app.engine('hbs', exphbs({
+    defaultLayout: 'main',
+    extname: '.hbs',
+    partialsDir: viewsPath + '/partials',
+    layoutsDir: viewsPath + '/layouts'
+}));
+app.set('view engine', 'hbs');
+
+app.get('/', function (req, res) {
+    res.render('index');
 });
 
 app.use('/api/ingredients', ingredients);
